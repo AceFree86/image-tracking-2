@@ -50,15 +50,4 @@
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
-
-  <script>
-    // Hide loader when AR.js is ready or an error occurs
-    document.querySelector('a-scene').addEventListener('arReady', () => {
-      document.getElementById('ar-loader').style.display = 'none';
-    });
-
-    document.querySelector('a-scene').addEventListener('arError', () => {
-      document.getElementById('ar-loader').style.display = 'none';
-    });
-  </script>
 </body>
