@@ -23,28 +23,28 @@
   }
 </style>
 
-<body style="margin : 0px; overflow: hidden;">
+<body style="margin: 0; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
   </div>
+
   <a-scene
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true; precision: medium;"
     embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
   >
-    <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+    <!-- Use CORS proxy or host image descriptors properly -->
     <a-nft
       type="nft"
       url="https://acefree86.github.io/image-tracking-2/assets/Image/Image"
       smooth="true"
       smoothCount="10"
-      smoothTolerance=".01"
+      smoothTolerance="0.01"
       smoothThreshold="5"
     >
-    <a-box position="0 0.5 0" scale="0.5 0.5 0.5" material="color: red;"></a-box>
-      </a-entity>
+      <a-box position="0 0.5 0" scale="0.5 0.5 0.5" material="color: red;"></a-box>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
