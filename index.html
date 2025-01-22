@@ -1,4 +1,3 @@
-
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.3.0/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
@@ -44,8 +43,13 @@
       smoothTolerance="0.01"
       smoothThreshold="5"
     >
-      <a-box position="0 0.5 0" scale="0.5 0.5 0.5" material="color: red;"></a-box>
+      <a-entity
+        gltf-model="https://acefree86.github.io/image-tracking-2/assets/models/cube.glb"
+        scale="5 5 5"
+        position="150 300 -100"
+      ></a-entity>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
 </body>
+
