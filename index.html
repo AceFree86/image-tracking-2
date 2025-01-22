@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.6.0/dist/aframe-master.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.6.0/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
 <style>
@@ -38,20 +37,15 @@
     <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
     <a-nft
       type="nft"
-      url="your-server/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      url="https://acefree86.github.io/image-tracking-2/assets/Image/Image"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
       smoothThreshold="5"
     >
-      <a-entity
-        gltf-model="your-server/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        scale="5 5 5"
-        position="150 300 -100"
-      >
+    <a-box position="0 0.5 0" scale="0.5 0.5 0.5" material="color: red;"></a-box>
       </a-entity>
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
 </body>
-</html>
