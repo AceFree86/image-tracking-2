@@ -24,7 +24,7 @@
 
 <body style="margin: 0; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded -->
-  <div class="arjs-loader">
+  <div class="arjs-loader" id="ar-loader">
     <div>Loading, please wait...</div>
   </div>
 
@@ -34,7 +34,6 @@
     embedded
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
   >
-    <!-- Use CORS proxy or host image descriptors properly -->
     <a-nft
       type="nft"
       url="https://acefree86.github.io/image-tracking-2/assets/Image/Image"
@@ -51,5 +50,15 @@
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
-</body>
 
+  <script>
+    // Hide loader when AR.js is ready or an error occurs
+    document.querySelector('a-scene').addEventListener('arReady', () => {
+      document.getElementById('ar-loader').style.display = 'none';
+    });
+
+    document.querySelector('a-scene').addEventListener('arError', () => {
+      document.getElementById('ar-loader').style.display = 'none';
+    });
+  </script>
+</body>
