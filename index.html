@@ -1,53 +1,68 @@
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.6.0/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-<style>
-  .arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: white;
-  }
-</style>
-
-<body style="margin: 0; overflow: hidden;">
-  <!-- minimal loader shown until image descriptors are loaded -->
-  <div class="arjs-loader" id="ar-loader">
-    <div>Loading, please wait...</div>
-  </div>
-
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true; precision: medium;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-  >
-    <a-nft
-      type="nft"
-      url="https://acefree86.github.io/image-tracking-2/assets/Image/Image"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance="0.01"
-      smoothThreshold="5"
-    >
-      <a-entity
-        gltf-model="https://acefree86.github.io/image-tracking-2/assets/models/cube.glb"
-        scale="5 5 5"
-        position="150 300 -100"
-      ></a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="importmap">
+    {
+      "imports": {
+	"three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+	"three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+	"mindar-image-three":"https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"
+      }
+    }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { MindARThree } from 'mindar-image-three';
+      const mindarThree = new MindARThree({
+	container: document.querySelector("#container"),
+	imageTargetSrc: "https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/Image/targets.mind"
+      });
+      const {renderer, scene, camera} = mindarThree;
+      const anchor = mindarThree.addAnchor(0);
+      const geometry = new THREE.PlaneGeometry(1, 0.55);
+      const material = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
+      const plane = new THREE.Mesh( geometry, material );
+      anchor.group.add(plane);
+      const start = async() => {
+	await mindarThree.start();
+	renderer.setAnimationLoop(() => {
+	  renderer.render(scene, camera);
+	});
+      }
+      const startButton = document.querySelector("#startButton");
+      startButton.addEventListener("click", () => {
+	start();
+      });
+      stopButton.addEventListener("click", () => {
+	mindarThree.stop();
+	mindarThree.renderer.setAnimationLoop(null);
+      });
+    </script>
+    <style>
+      body {
+	margin: 0;
+      }
+      #container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+      }
+      #control {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="control">
+      <button id="startButton">Start</button>
+      <button id="stopButton">Stop</button>
+    </div>
+    <div id="container">
+    </div>
+  </body>
+</html>
