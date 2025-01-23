@@ -24,10 +24,10 @@
       const { renderer, scene, camera } = mindarThree;
       const anchor = mindarThree.addAnchor(0);
 
-      const geometry = new THREE.PlaneGeometry(1, 0.55);
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
       const material = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5 }); // Red color
-      const plane = new THREE.Mesh(geometry, material);
-      anchor.group.add(plane);
+      const box = new THREE.Mesh(geometry, material);
+      anchor.group.add(box);
 
       const start = async () => {
         await mindarThree.start();
