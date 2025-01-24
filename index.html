@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const anchor = mindarThree.addAnchor(0);
 
-  const url = "assets/models/Box.gltf";
+  const url = "https://acefree86.github.io/image-tracking-2/assets/models/Box.gltf";
   const loader = new GLTFLoader();
   loader.load(url, (gltf) => {
     scene.add(gltf.scene);
     const model = gltf.scene;
-    model.scale.set(1, 1, 1);
+    model.scale.set(10, 10, 10);
     anchor.group.add(model);
     },
 
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </head>
   <body>
     <div id="control">
-      <button id="startButton">Start+g</button>
+      <button id="startButton">Start</button>
       <button id="stopButton">Stop</button>
     </div>
     <div id="container"></div>
