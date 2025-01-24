@@ -33,35 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const url = "https://acefree86.github.io/image-tracking-2/assets/models/Box.gltf";
   const loader = new GLTFLoader();
-  loader.load(url, (gltf) => {
-   
-    const model = gltf.scene;
-    model.scale.set(10, 10, 10);
-    anchor.group.add(model);
-    },
 
-    (xhr) => {
-      console.log(
-        `Model ${Math.round((xhr.loaded / xhr.total) * 100)}% loaded`
-      );
-    },
-    (error) => {
-      console.error("An error occurred while loading the GLTF model:", error);
-    }
-  );
+  loader.load( url, function ( gltf ) {
+    scene.add( gltf.scene );
+  }, undefined, function ( error ) {
+    console.error( error );
+  } );
 
-  // Variables for camera movement
+
   let angle = 0;
   const radius = 3; // Radius of the camera's orbit
-  const targetPosition = new THREE.Vector3(0, 0, 0); // Target object position (center)
+  const targetPosition = new THREE.Vector3(0, 0, 0);
 
   const updateCameraPosition = () => {
-    // Calculate the camera's position in polar coordinates (circle)
     camera.position.x = targetPosition.x + radius * Math.cos(angle);
-    camera.position.y = targetPosition.y + 1; // Adjust vertical position
+    camera.position.y = targetPosition.y + 1;
     camera.position.z = targetPosition.z + radius * Math.sin(angle);
 
-    // Make the camera always look at the target
     camera.lookAt(targetPosition);
   };
 
@@ -118,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </head>
   <body>
     <div id="control">
-      <button id="startButton">Start</button>
+      <button id="startButton">Start--</button>
       <button id="stopButton">Stop</button>
     </div>
     <div id="container"></div>
