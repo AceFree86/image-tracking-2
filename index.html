@@ -15,7 +15,8 @@
     <script type="module">
      import * as THREE from "three";
 import { MindARThree } from "mindar-image-three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const mindarThree = new MindARThree({
@@ -34,11 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const url = "https://acefree86.github.io/image-tracking-2/assets/models/Box.gltf";
   const loader = new GLTFLoader();
 
-  loader.load( url, function ( gltf ) {
-    scene.add( gltf.scene );
-  }, undefined, function ( error ) {
-    console.error( error );
-  } );
+  loader.load(url, function (gltf) {
+  const model = gltf.scene;
+  model.scale.set(0.5, 0.5, 0.5); // Scale the model if necessary
+  anchor.group.add(model); // Attach to the anchor
+}, undefined, function (error) {
+  console.error("Error loading GLTF:", error);
+});
 
 
   let angle = 0;
@@ -106,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </head>
   <body>
     <div id="control">
-      <button id="startButton">Start--</button>
+      <button id="startButton">Start--+</button>
       <button id="stopButton">Stop</button>
     </div>
     <div id="container"></div>
