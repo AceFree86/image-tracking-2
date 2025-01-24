@@ -31,16 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const anchor = mindarThree.addAnchor(0);
 
-  const url =
-    "assets/models/Box.gltf";
+  const url = "assets/models/Box.gltf";
   const loader = new GLTFLoader();
-  loader.load(
-    url,
-    (gltf) => {
-      const model = gltf.scene;
-      model.scale.set(1, 1, 1);
-      anchor.group.add(model);
+  loader.load(url, (gltf) => {
+    scene.add(gltf.scene);
+    const model = gltf.scene;
+    model.scale.set(1, 1, 1);
+    anchor.group.add(model);
     },
+
     (xhr) => {
       console.log(
         `Model ${Math.round((xhr.loaded / xhr.total) * 100)}% loaded`
