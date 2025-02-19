@@ -33,10 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const boxAnimashen = document.querySelector(".box");
   const startButton = document.querySelector("#startButton");
-  startButton.style.display = "none";
   const errorDisplay = document.querySelector("#error-message");
-  errorDisplay.style.display = "none";
   let isRunning = false;
+
+  // Initially, show only the animation box
+  boxAnimashen.style.display = "block";
+  startButton.style.display = "none";
 
   // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -71,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (errorDisplay) {
         boxAnimashen.style.display = "none";
         startButton.style.visibility = "visible";
-        errorDisplay.style.visibility = "visible";
         errorDisplay.textContent = "loaded";
         errorDisplay.style.color = "blue";
         errorDisplay.style.fontSize = "15px";
@@ -83,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     (error) => {
       if (errorDisplay) {
         boxAnimashen.style.display = "none";
-        errorDisplay.style.visibility = "visible";
         errorDisplay.textContent = "Error";
         errorDisplay.style.color = "red";
         errorDisplay.style.fontSize = "15px";
