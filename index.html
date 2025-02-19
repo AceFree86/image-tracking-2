@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const { renderer, scene, camera } = mindarThree;
 
+  const boxAnimashen = document.querySelector(".box");
   const startButton = document.querySelector("#startButton");
   startButton.style.display = "none";
   const errorDisplay = document.querySelector("#error-message");
@@ -68,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     (xhr) => {
       if (errorDisplay) {
+        boxAnimashen.style.display = "none";
         startButton.style.visibility = "visible";
         errorDisplay.style.visibility = "visible";
         errorDisplay.textContent = "loaded";
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     (error) => {
       if (errorDisplay) {
+        boxAnimashen.style.display = "none";
         errorDisplay.style.visibility = "visible";
         errorDisplay.textContent = "Error";
         errorDisplay.style.color = "red";
