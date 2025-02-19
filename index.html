@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initially, show only the animation box
   startButton.style.display = "none";
+  startButton.textContent = "";
 
   // Lighting
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -72,9 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (errorDisplay) {
         boxAnimashen.style.display = "none";
         startButton.style.display = "block";
-        errorDisplay.textContent = "loaded";
+        startButton.textContent = "Старт";
+        errorDisplay.textContent = "L";
         errorDisplay.style.color = "blue";
-        errorDisplay.style.fontSize = "15px";
+        errorDisplay.style.fontSize = "20px";
       }
       console.log(
         `Model ${Math.round((xhr.loaded / xhr.total) * 100)}% loaded`
@@ -83,9 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     (error) => {
       if (errorDisplay) {
         boxAnimashen.style.display = "none";
-        errorDisplay.textContent = "Error";
+        errorDisplay.textContent = "E";
         errorDisplay.style.color = "red";
-        errorDisplay.style.fontSize = "15px";
+        errorDisplay.style.fontSize = "20px";
         console.error(`Error: ${error.message}`);
       }
     }
