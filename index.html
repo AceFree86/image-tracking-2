@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     (gltf) => {
       const model = gltf.scene;
       model.position.set(0, 0, 0);
-      model.rotation.set(0, 0, 0); // Reset rotation
+      model.rotation.set(0, 0, 0);
       model.scale.set(2, 2, 2);
       groupM.add(model);
 
@@ -248,7 +248,7 @@ button {
         <div class="item item-3"></div>
         <div class="item item-4"></div>
       </div>
-      <button id="startButton">Старт</button>
+      <button id="startButton"></button>
     </div>
     <div id="container"></div>
   </body>
